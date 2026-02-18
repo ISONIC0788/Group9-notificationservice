@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"
-         import="com.smartcampus.notification.model.Notification" %>
+         import="org.ebedi.notificationservice.model.Notification" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +14,7 @@
 </head>
 <body>
 <nav class="navbar navbar-dark px-4 py-2 mb-4">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/">&#128276; Notification Service</a
-    >
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/">&#128276; Notification Service</a>
 </nav>
 <div class="container" style="max-width: 640px;">
     <%
@@ -40,8 +39,8 @@
             %>
             <span class="badge <%= bc %>"><%= n.getType() %></span>
             <span class="badge <%= n.isRead() ? "bg-light text-dark border" : "bg-danger" %>">
-<%= n.isRead() ? "Read" : "Unread" %>
-</span>
+                <%= n.isRead() ? "Read" : "Unread" %>
+            </span>
         </div>
         <hr>
         <p class="fs-6"><%= n.getMessage() %></p>

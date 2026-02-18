@@ -1,7 +1,7 @@
-
-package org.ebedi.notificationservice.model
+package org.ebedi.notificationservice.model;
 
 import java.time.LocalDateTime;
+
 /**
  * Notification.java (Model)
  * --------------------------
@@ -17,13 +17,15 @@ public class Notification {
     private int userId;
     private String title;
     private String message;
-    private String type; // GENERAL | PAYMENT | ENROLLMENT | RESULT | ATTENDANCE | SYSTE
+    private String type; // GENERAL | PAYMENT | ENROLLMENT | RESULT | ATTENDANCE | SYSTEM
     private boolean isRead;
     private LocalDateTime createdAt;
     private LocalDateTime readAt; // null until the notification is read
-// ■■ Constructors ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+    // ■■ Constructors ■■
     /** Empty constructor - used when reading from database */
     public Notification() {}
+
     /** Constructor used when creating a NEW notification */
     public Notification(int userId, String title, String message, String type) {
         this.userId = userId;
@@ -33,7 +35,8 @@ public class Notification {
         this.isRead = false;
         this.createdAt = LocalDateTime.now();
     }
-    // ■■ Getters and Setters ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+    // ■■ Getters and Setters ■■
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public int getUserId() { return userId; }
@@ -50,22 +53,11 @@ public class Notification {
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
     public LocalDateTime getReadAt() { return readAt; }
     public void setReadAt(LocalDateTime readAt) { this.readAt = readAt; }
-// ■■ toJSON() ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+    // ■■ toJSON() ■■
     /**
      * Converts this notification to a JSON string.
      * Called by the API controller when responding to other services.
-     *
-     * Example output:
-     * {
-     * "id": 1,
-     * "userId": 1,
-     * "title": "Payment Confirmed",
-     * "message": "Your payment was received.",
-     * "type": "PAYMENT",
-     * "isRead": false,
-     * "createdAt": "2025-01-15T10:30:00",
-     * "readAt": ""
-     * }
      */
     public String toJSON() {
         return "{"
@@ -79,6 +71,7 @@ public class Notification {
                 + "\"readAt\":\"" + (readAt != null ? readAt.toString() : "") + "\""
                 + "}";
     }
+
     // escapes special characters for JSON safety
     private String esc(String s) {
         if (s == null) return "";
