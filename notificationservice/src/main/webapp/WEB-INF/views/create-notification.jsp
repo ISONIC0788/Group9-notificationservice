@@ -13,46 +13,42 @@
 </head>
 <body>
 <nav class="navbar navbar-dark px-4 py-2 mb-4">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/">&#128276; Notification Service</a
-    >
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/">&#128276; Notification Service</a>
 </nav>
 <div class="container" style="max-width: 580px;">
     <div class="card shadow-sm p-4">
         <h4 class="mb-4">&#10133; Create New Notification</h4>
-        <!-- Error message (shown when validation fails) -->
+
         <% String error = (String) request.getAttribute("error"); %>
         <% if (error != null) { %>
         <div class="alert alert-danger"><%= error %></div>
         <% } %>
-        <!--
-        This form posts to /notifications/create
-        The NotificationController handles it, then redirects to user inbox
-        -->
+
         <form action="${pageContext.request.contextPath}/notifications/create" method="post">
             <div class="mb-3">
                 <label class="form-label fw-semibold">User ID <span class="text-danger">*</span></label>
                 <input type="number" name="userId" class="form-control"
                        placeholder="Enter the user's ID (e.g. 1)"
-                       value="<%= request.getAttribute("userId") != null ? request.getAttribute("userId") : ""
-%>"
+                       value="<%= request.getAttribute("userId") != null ? request.getAttribute("userId") : "" %>"
                        required min="1">
                 <div class="form-text">The notification will be sent to this user.</div>
             </div>
+
             <div class="mb-3">
                 <label class="form-label fw-semibold">Title <span class="text-danger">*</span></label>
                 <input type="text" name="title" class="form-control"
                        placeholder="Short notification title (e.g. Payment Confirmed)"
-                       value="<%= request.getAttribute("title") != null ? request.getAttribute("title") : "" %
->"
-required>
-</div>
-<div class="mb-3">
-<label class="form-label fw-semibold">Message <span class="text-danger">*</span></label>
-<textarea name="message" class="form-control" rows="4"
-placeholder="Full notification message..." required><%= request.getAttribute("messag
-e") != null ? request.getAttribute("message") : "" %></textarea>
-</div>
-<div class="mb-4">
+                       value="<%= request.getAttribute("title") != null ? request.getAttribute("title") : "" %>"
+                       required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Message <span class="text-danger">*</span></label>
+                <textarea name="message" class="form-control" rows="4"
+                          placeholder="Full notification message..." required><%= request.getAttribute("message") != null ? request.getAttribute("message") : "" %></textarea>
+            </div>
+
+            <div class="mb-4">
                 <label class="form-label fw-semibold">Type</label>
                 <select name="type" class="form-select">
                     <option value="GENERAL">GENERAL &mdash; General announcement</option>
@@ -63,6 +59,7 @@ e") != null ? request.getAttribute("message") : "" %></textarea>
                     <option value="SYSTEM">SYSTEM &mdash; System message</option>
                 </select>
             </div>
+
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary">&#10003; Send Notification</button>
                 <a href="${pageContext.request.contextPath}/" class="btn btn-outline-secondary">Cancel</a>
@@ -71,3 +68,4 @@ e") != null ? request.getAttribute("message") : "" %></textarea>
     </div>
 </div>
 </body>
+</html>

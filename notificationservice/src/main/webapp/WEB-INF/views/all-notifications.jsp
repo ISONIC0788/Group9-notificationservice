@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"
-         import="com.smartcampus.notification.model.Notification, java.util.List" %>
+         import="org.ebedi.notificationservice.model.Notification, java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +15,7 @@
 </head>
 <body>
 <nav class="navbar navbar-dark px-4 py-2 mb-4">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/">&#128276; Notification Service</a
-    >
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/">&#128276; Notification Service</a>
     <a href="${pageContext.request.contextPath}/notifications/new" class="btn btn-warning btn-sm">
         + New Notification
     </a>
@@ -25,8 +24,8 @@
     <h4 class="mb-3">
         All Notifications
         <span class="badge bg-secondary">
-<%= ((List) request.getAttribute("notifications")).size() %> total
-</span>
+            <%= ((List) request.getAttribute("notifications")).size() %> total
+        </span>
     </h4>
     <%
         @SuppressWarnings("unchecked")
@@ -71,9 +70,9 @@
                     <span class="badge <%= badgeClass %>"><%= t %></span>
                 </td>
                 <td>
-<span class="badge <%= n.isRead() ? "bg-light text-dark border" : "bg-danger" %>">
-<%= n.isRead() ? "Read" : "Unread" %>
-</span>
+                    <span class="badge <%= n.isRead() ? "bg-light text-dark border" : "bg-danger" %>">
+                        <%= n.isRead() ? "Read" : "Unread" %>
+                    </span>
                 </td>
                 <td><small><%= n.getCreatedAt() %></small></td>
                 <td>

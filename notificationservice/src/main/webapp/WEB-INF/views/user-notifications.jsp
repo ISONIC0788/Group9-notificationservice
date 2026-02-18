@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"
-         import="com.smartcampus.notification.model.Notification, java.util.List" %>
+         import="org.ebedi.notificationservice.model.Notification, java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,17 +16,13 @@
 </head>
 <body>
 <nav class="navbar navbar-dark px-4 py-2 mb-4">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/">&#128276; Notification Service</a
-    >
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/">&#128276; Notification Service</a>
     <div class="d-flex gap-2">
-        <a href="${pageContext.request.contextPath}/notifications/" class="btn btn-outline-light btn-sm">A
-            ll</a>
-        <a href="${pageContext.request.contextPath}/notifications/new" class="btn btn-warning btn-sm">+ Ne
-            w</a>
+        <a href="${pageContext.request.contextPath}/notifications/" class="btn btn-outline-light btn-sm">All</a>
+        <a href="${pageContext.request.contextPath}/notifications/new" class="btn btn-warning btn-sm">+ New</a>
     </div>
 </nav>
 <div class="container">
-    <!-- Header row -->
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h4 class="mb-0">
             &#128100; User #${userId} &mdash; Notifications
@@ -46,7 +42,6 @@
         </form>
         <% } %>
     </div>
-    <!-- Success message -->
     <% if ("created".equals(request.getParameter("success"))) { %>
     <div class="alert alert-success alert-dismissible fade show">
         &#10003; Notification created successfully!
@@ -63,7 +58,6 @@
     <% for (Notification n : notes) { %>
     <div class="card mb-3 <%= n.isRead() ? "card-read" : "card-unread" %>">
         <div class="card-body">
-            <!-- Title row -->
             <div class="d-flex justify-content-between align-items-start">
                 <h6 class="<%= !n.isRead() ? "fw-bold" : "text-muted" %> mb-1">
                     <%= n.getTitle() %>
@@ -84,7 +78,6 @@
                     <% } %>
                 </div>
             </div>
-            <!-- Message -->
             <p class="card-text mb-1"><%= n.getMessage() %></p>
             <small class="text-muted">
                 Created: <%= n.getCreatedAt() %>
@@ -92,7 +85,6 @@
                 &nbsp;| Read: <%= n.getReadAt() %>
                 <% } %>
             </small>
-            <!-- Action buttons -->
             <div class="mt-2 d-flex gap-2">
                 <% if (!n.isRead()) { %>
                 <form action="${pageContext.request.contextPath}/notifications/markRead" method="post">
@@ -118,4 +110,4 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</htm
+</html>

@@ -15,7 +15,7 @@ public class DBConnection {
     private static final String PORT = "3306";
     private static final String DB_NAME = "notification_db";
     private static final String USERNAME = "root"; // your MySQL username
-    private static final String PASSWORD = "root"; // your MySQL password
+    private static final String PASSWORD = ""; // your MySQL password
     // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     private static final String URL =
             "jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME
