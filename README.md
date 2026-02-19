@@ -35,7 +35,6 @@ If your local MySQL username and password differ from the defaults, update the c
    private static final String USERNAME = "root"; 
    private static final String PASSWORD = "your_password_here"; // Update this if needed
 
-```
 
 ### 3. Server Configuration (Port 8089)
 
