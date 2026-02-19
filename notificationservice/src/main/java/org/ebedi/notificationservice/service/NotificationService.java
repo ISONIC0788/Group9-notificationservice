@@ -59,7 +59,7 @@ public class NotificationService {
         try {
             // ASSUMPTION: Group 2 is running on port 8082.
             // Ask Group 2 for their exact URL and change this if needed.
-            String targetUrl = "http://localhost:8082/student-service/api/students/" + userId;
+            String targetUrl = "https://klgyt-154-68-72-191.a.free.pinggy.link/Group_II_Student_Service_war_exploded/" + userId;
             URL url = new URL(targetUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
